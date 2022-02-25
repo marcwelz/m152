@@ -1,4 +1,6 @@
 .navigation-bar {
+    position: fixed;
+    width: 100%;
     display: flex;
     background-color: #f09f9c;
     height: 54px;
