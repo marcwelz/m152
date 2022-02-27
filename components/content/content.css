@@ -1,0 +1,14 @@
+.content-wrapper {
+    width: 100%;
+    margin-top: -120px;
+    justify-content: center;
+    display: flex;
+}
+
+.content {
+    width: 80%;
+    min-height: 1200px;
+    background-color: white;
+    
+    box-shadow: 0px 1px 8px rgba(0,0,0,0.15);
+}

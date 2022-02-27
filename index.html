@@ -5,22 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="components/navigation/navigation.js" type="text/javascript" defer></script>
     <script src="components/footer/footer.js" type="text/javascript" defer></script>
+    <script src="components/title/title.js" type="text/javascript" defer></script>
+    <script src="components/content/content.js" type="text/javascript" defer></script>
     <link rel="stylesheet" href="components/footer/footer.css">
     <link rel="stylesheet" href="components/navigation/navigation.css">
+    <link rel="stylesheet" href="components/title/title.css">
+    <link rel="stylesheet" href="components/content/content.css">
     <link rel="stylesheet" href="style.css">
     <title>pistenbully.ch</title>
 </head>
 <body>
     <navigation-component></navigation-component>
     <div class="header">
-        <div class="title">
-            <img src = "images/IMG_00088.JPG" alt="main image"/>
-            <h1>PISTENBULLY</h1>
-        </div>
+        <title-component></title-component>
     </div>
 
     <div class="body">
-
+        <content-component>
+            <h2 slot="content">hello</h2>
+        </content-component>
     </div>
     <footer-component></footer-component>
 </body>
