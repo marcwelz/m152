@@ -1,18 +1,35 @@
 class Content extends HTMLElement {
+
+    
+
     constructor() {
       super();
-    }
-  
-    connectedCallback() {
-      this.innerHTML = `
+      this.attachShadow({ mode: 'open' });
+      this.shadowRoot.innerHTML = `
+        <style>
+          .content-wrapper {
+            width: 100%;
+            margin-top: -120px;
+            justify-content: center;
+            display: flex;
+          }
+          
+          .content {
+              width: 80%;
+              min-height: 1200px;
+              background-color: white;
+              
+              box-shadow: 0px 1px 8px rgba(0,0,0,0.15);
+          }
+        </style>
+
         <div class="content-wrapper">
             <div class="content">
-              <slot name="content"></slot>
+              <slot></slot>
             </div>
         </div>
       `;
     }
-
   }
   
-  customElements.define('content-component', Content);
+  window.customElements.define('content-component', Content);
