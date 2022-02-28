@@ -15,11 +15,11 @@ class Content extends HTMLElement {
           }
           
           .content {
-              width: 80%;
-              min-height: 1200px;
-              background-color: white;
-              
-              box-shadow: 0px 1px 8px rgba(0,0,0,0.15);
+            width: calc(80% - 40px);
+            padding: 40px;
+            min-height: 1200px;
+            background-color: white;          
+            box-shadow: 0px 1px 8px rgba(0,0,0,0.15);
           }
         </style>
 
