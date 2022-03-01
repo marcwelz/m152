@@ -6,21 +6,8 @@ class Content extends HTMLElement {
       super();
       this.attachShadow({ mode: 'open' });
       this.shadowRoot.innerHTML = `
-        <style>
-          .content-wrapper {
-            width: 100%;
-            margin-top: -120px;
-            justify-content: center;
-            display: flex;
-          }
-          
-          .content {
-            width: calc(80% - 40px);
-            padding: 40px;
-            min-height: 1200px;
-            background-color: white;          
-            box-shadow: 0px 1px 8px rgba(0,0,0,0.15);
-          }
+      <style>
+          @import "components/content/content.css";
         </style>
 
         <div class="content-wrapper">

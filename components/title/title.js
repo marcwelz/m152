@@ -5,8 +5,12 @@ class Title extends HTMLElement {
   
     connectedCallback() {
       this.innerHTML = `
+        <style>
+          @import "components/title/title.css";
+        </style>
+
         <div class="title">
-            <img src = "images/IMG_00088.JPG" alt="main image"/>
+            <img src = "images/images/IMG_00088.JPG" alt="main image"/>
             <h1>PISTENBULLY</h1>
         </div>
       `;

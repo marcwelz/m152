@@ -5,6 +5,9 @@ class Footer extends HTMLElement {
   
     connectedCallback() {
       this.innerHTML = `
+        <style>
+          @import "components/footer/footer.css";
+        </style>
         <div class="footer">
             <div class="footer-content">
               <p>About us</p>

@@ -5,6 +5,9 @@ class Navigation extends HTMLElement {
   
     connectedCallback() {
       this.innerHTML = `
+        <style>
+          @import "components/navigation/navigation.css";
+        </style>
         <div class="navigation-bar">
             <div class="navigation">
                 <button >HOME</button>

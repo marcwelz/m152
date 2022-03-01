@@ -5,8 +5,8 @@
 }
 
 .title > h1 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 54px;
+    font-family: Helvetica, Arial, sans-serif !important;
+    font-size: 100px !important;
     color: white;
     position: absolute;
     text-align: center; 
@@ -15,7 +15,5 @@
     width: 100%;
     margin-top: 100px;
     text-shadow: 0px 1px 8px rgba(0,0,0,0.15);
-    font-weight: bold;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    font-weight: bold !important;
 }
