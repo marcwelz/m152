@@ -48,3 +48,17 @@
 .navigation > button:hover {
     background-color: #545453;
 }
+
+@media screen and (max-width:750px) {
+    .navigation > button {
+        display: none;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .navigation-symbol {
+        width: 100%;
+    }
+}
