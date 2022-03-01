@@ -10,7 +10,7 @@ class Navigation extends HTMLElement {
         </style>
         <div class="navigation-bar">
             <div class="navigation">
-                <button >HOME</button>
+                <button onclick="window.location.href = 'index.html';">HOME</button>
                 <button >NEWS</button>
                 <button >ABOUT US</button>
                 <button >CONTACT</button>

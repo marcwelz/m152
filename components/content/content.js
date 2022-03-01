@@ -6,7 +6,6 @@ class Content extends HTMLElement {
       <style>
           @import "components/content/content.css";
         </style>
-
         <div class="content-wrapper">
             <div class="content">
               <slot></slot>

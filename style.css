@@ -4,3 +4,15 @@ body {
     height: 100%;
     margin: 0;
 }
+
+.button-style {
+    padding: 10px 20px;
+    min-width: 120px;
+    background-color: #f09f9c;
+    border: solid 1px;
+}
+
+.button-style:hover {
+    background-color: darkgray;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.5);
+}

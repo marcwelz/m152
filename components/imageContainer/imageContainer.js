@@ -20,6 +20,7 @@ class ImageContainer extends HTMLElement {
 
         this.imagesrc = this.shadowRoot.querySelector('img');
         this.imagesrc.setAttribute("src", imgsrc)
+
     }
   }
   

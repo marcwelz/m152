@@ -9,3 +9,9 @@ body {
     display: flex;
     flex-flow: row wrap;
 }
+
+@media screen and (max-width:900px) {
+    .galery {
+        justify-content: center;
+    }
+}
