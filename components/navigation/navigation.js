@@ -20,9 +20,17 @@ class Navigation extends HTMLElement {
                     <img src = "images/symbols/search.svg" alt="search icon"/>
                 </div>
                 <div class="social-media">
-                    <img src = "images/symbols/instagram.svg" alt="instagram icon"/>
-                    <img src = "images/symbols/youtube.svg" alt="youtube icon"/>
+                    <img 
+                      onclick="window.location.href = 'https://www.instagram.com/marc.welz/';" 
+                      src = "images/symbols/instagram.svg" alt="instagram icon"/>
+                    <img 
+                      onclick="window.location.href = 'https://www.youtube.com/channel/UC1MwmQR-o3j5f-mGL7IqMPA';" 
+                      src = "images/symbols/youtube.svg" alt="youtube icon"/>
                     <img src = "images/symbols/facebook.svg" alt="facebook icon"/>
+                    <img 
+                      onclick="window.location.href = 'https://github.com/marcwelz/m152';" 
+                      src = "images/symbols/github.svg" alt="github icon"
+                    />
                 </div>
             </div>
         </div>

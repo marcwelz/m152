@@ -11,14 +11,27 @@ class ImageContainer extends HTMLElement {
 
         <div class="image-container">
             <img class="image-container-img"/>
+            <div class="image-container-text">
+              <p></p>
+            </div>
         </div>
       `;
     }
   
     connectedCallback() {
-        const imgsrc = this.getAttribute("imgsrc")
-
         this.imagesrc = this.shadowRoot.querySelector('img');
+        this.textparagraph = this.shadowRoot.querySelector("p")
+
+        const imgsrc = this.getAttribute("imgsrc")
+        const isOpen = this.getAttribute("open")
+
+        this.textparagraph.innerHTML = imgsrc.replace("images/images/", "");
+
+        if(isOpen) {
+          this.imagesrc.classList.remove("image-container-img")
+          this.imagesrc.classList.add("image-container-img__open")
+        }
+
         this.imagesrc.setAttribute("src", imgsrc)
 
     }

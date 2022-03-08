@@ -12,8 +12,9 @@ class Footer extends HTMLElement {
             <div class="footer-content">
               <p>About us</p>
               <p>News</p>
-              <p>Home</p>
-              <p>Conent</p>
+              <p onclick="window.location.href = 'index.html';">Home</p>
+              <p onclick="window.location.href = 'galery.html';">Galery</p>
+              <p>Content</p>
             </div>
             <div class="credits">
               <p>© Welz Marc</p>

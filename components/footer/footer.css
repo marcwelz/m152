@@ -18,6 +18,10 @@ body {
     margin: 16px 10px;
 }
 
+.footer-content > p:hover {
+    color: blue;
+}
+
 .credits {
     color: white;
 }
