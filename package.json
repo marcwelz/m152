@@ -1,0 +1,19 @@
+{
+  "name": "m152_project",
+  "version": "1.0.0",
+  "description": "school project",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcwelz/m152.git"
+  },
+  "author": "marc.welz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcwelz/m152/issues"
+  },
+  "homepage": "https://github.com/marcwelz/m152#readme"
+}
