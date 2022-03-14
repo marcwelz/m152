@@ -27,6 +27,9 @@ class ImageContainer extends HTMLElement {
         this.textparagraph.innerHTML = imgsrc.replace("images/images/", "");
         this.imagesrc.setAttribute("src", imgsrc)
 
+        this.shadowRoot.addEventListener("click", function(){ 
+          alert("Hello World!"); 
+        });
     }
   }
   

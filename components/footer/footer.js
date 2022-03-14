@@ -14,6 +14,7 @@ class Footer extends HTMLElement {
               <p>News</p>
               <p onclick="window.location.href = 'index.html';">Home</p>
               <p onclick="window.location.href = 'galery.html';">Galery</p>
+              <p onclick="window.location.href = 'transcript.html';">Transkript</p>
               <p>Content</p>
             </div>
             <div class="credits">
