@@ -1,0 +1,192 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="components/navigation/navigation.js" type="text/javascript" defer></script>
+    <script src="components/footer/footer.js" type="text/javascript" defer></script>
+    <script src="components/title/title.js" type="text/javascript" defer></script>
+    <script src="components/content/content.js" type="text/javascript" defer></script>
+    <script src="components/imageContainer/imageContainer.js" type="text/javascript" defer></script>
+    <link rel="stylesheet" href="sites/functional_galery/functional_galery.css">
+    <title>Functional Galery</title>
+</head>
+<body>
+    <script>
+        function initComparisons() {
+            var x, i;
+            /*find all elements with an "overlay" class:*/
+            x = document.getElementsByClassName("img-comp-overlay");
+            for (i = 0; i < x.length; i++) {
+                /*once for each "overlay" element:
+                pass the "overlay" element as a parameter when executing the compareImages function:*/
+                compareImages(x[i]);
+            }
+            function compareImages(img) {
+                var slider, img, clicked = 0, w, h;
+                /*get the width and height of the img element*/
+                w = img.offsetWidth;
+                h = img.offsetHeight;
+                /*set the width of the img element to 50%:*/
+                img.style.width = (w / 2) + "px";
+                /*create slider:*/
+                slider = document.createElement("DIV");
+                slider.setAttribute("class", "img-comp-slider");
+                /*insert slider*/
+                img.parentElement.insertBefore(slider, img);
+                /*position the slider in the middle:*/
+                slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+                slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+                /*execute a function when the mouse button is pressed:*/
+                slider.addEventListener("mousedown", slideReady);
+                /*and another function when the mouse button is released:*/
+                window.addEventListener("mouseup", slideFinish);
+                /*or touched (for touch screens:*/
+                slider.addEventListener("touchstart", slideReady);
+                /*and released (for touch screens:*/
+                window.addEventListener("touchend", slideFinish);
+                function slideReady(e) {
+                /*prevent any other actions that may occur when moving over the image:*/
+                e.preventDefault();
+                /*the slider is now clicked and ready to move:*/
+                clicked = 1;
+                /*execute a function when the slider is moved:*/
+                window.addEventListener("mousemove", slideMove);
+                window.addEventListener("touchmove", slideMove);
+                }
+                function slideFinish() {
+                /*the slider is no longer clicked:*/
+                clicked = 0;
+                }
+                function slideMove(e) {
+                var pos;
+                /*if the slider is no longer clicked, exit this function:*/
+                if (clicked == 0) return false;
+                /*get the cursor's x position:*/
+                pos = getCursorPos(e)
+                /*prevent the slider from being positioned outside the image:*/
+                if (pos < 0) pos = 0;
+                if (pos > w) pos = w;
+                /*execute a function that will resize the overlay image according to the cursor:*/
+                slide(pos);
+                }
+                function getCursorPos(e) {
+                var a, x = 0;
+                e = (e.changedTouches) ? e.changedTouches[0] : e;
+                /*get the x positions of the image:*/
+                a = img.getBoundingClientRect();
+                /*calculate the cursor's x coordinate, relative to the image:*/
+                x = e.pageX - a.left;
+                /*consider any page scrolling:*/
+                x = x - window.pageXOffset;
+                return x;
+                }
+                function slide(x) {
+                /*resize the image:*/
+                img.style.width = x + "px";
+                /*position the slider:*/
+                slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+                }
+            }
+        }
+    </script>
+
+    <navigation-component></navigation-component>
+    <div class="header">
+        <title-component></title-component>
+    </div>
+
+    <div class="body">
+        <content-component>
+            <div class="functional-galery-container">
+                <h2>Functional Galery</h2>
+                
+                
+                <div class="image-information-container">
+                    <img src="images/images/IMG_00086.JPG"/>
+                    <div class="image-information-left-content">
+                        <h3>Pistenbully im Tageslicht</h2>
+                        <h5>Kein Effekt</h3>
+                        <p>Dieses Bild hat keinen Effekt und ist "vanilla"</p>
+                    </div>
+                </div>
+
+                <div class="image-information-container">
+                    <img style="filter: grayscale(100%)" src="images/images/IMG_00114.JPG"/>
+                    <div class="image-information-left-content">
+                        <h3>Pistenbully in der Nacht</h2>
+                        <h5>Grayfilter</h3>
+                        <p>Das Bild wird Schwarz-Weiss gemacht. Wie im 19. Jahrhundert</p>
+                    </div>
+                </div>
+
+                <div class="image-information-container">
+                    <img style="filter: blur(5px);" src="images/images/IMG_00138.JPG"/>
+                    <div class="image-information-left-content">
+                        <h3>Betrunkener Pistenbully</h2>
+                        <h5>Blur effect</h3>
+                        <p>Das Bild wird verschwommen, als wäre man betrunken :)</p>
+                    </div>
+                </div>
+
+                <div class="image-information-container">
+                    <img style="filter: contrast(200%);" src="images/images/IMG_00143.JPG"/>
+                    <div class="image-information-left-content">
+                        <h3>Kontrastreicher Pistenbully</h2>
+                        <h5>Kontrast effect</h3>
+                        <p>Der Kontrast wird start erhöht (um 200%)</p>
+                    </div>
+                </div>
+
+                <div class="image-information-container">
+                    <img style="filter: invert(100%);" src="images/images/IMG_00300.JPG"/>
+                    <div class="image-information-left-content">
+                        <h3>Invertierter Pistenbully</h2>
+                        <h5>Invert effect</h3>
+                        <p>Die Farben werden Invertiert. Das heisst, dass sich die Farben
+                            "umkehren". Weiss wird zu Schwarz und umgekehrt.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="image-information-container">
+                    <img style="filter: hue-rotate(90deg);" src="images/images/IMG_00306.JPG"/>
+                    <div class="image-information-left-content">
+                        <h3>Pistenbully auf Drogen</h2>
+                        <h5>Hue Rotation effect</h3>
+                        <p>Die Farben werden Invertiert. Das heisst, dass sich die Farben
+                            "umkehren". Weiss wird zu Schwarz und umgekehrt.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="image-information-container">
+                    <img style="filter: saturate(8);" src="images/images/IMG_00306.JPG"/>
+                    <div class="image-information-left-content">
+                        <h3>Pistenbully ist gesättigt</h2>
+                        <h5>Saturate effect</h3>
+                        <p>Auf das Bild wurde ein sättigungs Filter angewendet.</p>
+                    </div>
+                </div>
+
+                <h3>Invert Slider</h3>
+                <div class="img-comp-container">
+                    <div class="img-comp-img">
+                      <img src="images/images/IMG_00439.JPG" width="600" height="400">
+                    </div>
+                    <div class="img-comp-img img-comp-overlay">
+                      <img src="images/images/IMG_00439.JPG" style="filter: invert(100%);" width="600" height="400">
+                    </div>
+                </div>
+            </div>
+        </content-component>
+    </div>
+    <footer-component></footer-component>
+
+    <script>
+        initComparisons();
+    </script>
+
+</body>
+</html>
+
