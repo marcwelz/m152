@@ -26,7 +26,7 @@ public class Controller {
     }
 
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public boolean addImage(@RequestBody ImageM152 imageM152) {
-        return service.addImage(imageM152);
+    public void addImage(@RequestBody ImageM152 imageM152) {
+        service.addImage(imageM152);
     }
 }
