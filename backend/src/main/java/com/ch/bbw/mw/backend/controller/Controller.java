@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RequiredArgsConstructor
 @RestController
@@ -15,18 +15,23 @@ public class Controller {
 
     private final Service service;
 
-    @GetMapping(value = "/{filename}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ImageM152 getImageByFilename(@PathVariable String filename) {
+    @GetMapping(value = "/filename/{filename}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Collection<ImageM152> getImageByFilename(@PathVariable String filename) {
         return service.getImageByFilename(filename);
     }
 
-    @GetMapping(value = "/{sector}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ImageM152> getImagesBySector(@PathVariable String sector) {
+    @GetMapping(value = "/sector/{sector}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Collection<ImageM152> getImagesBySector(@PathVariable String sector) {
         return service.getImagesBySector(sector);
     }
 
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addImage(@RequestBody ImageM152 imageM152) {
         service.addImage(imageM152);
+    }
+
+    @DeleteMapping(value = "/delete/{filename}")
+    public void deleteImage(@PathVariable String filename) {
+        service.deleteImage(filename);
     }
 }

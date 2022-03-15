@@ -21,9 +21,6 @@ public class ImageM152 {
     @Column(name = "filename")
     private String filename;
 
-    @Column(name = "version")
-    private String version;
-
     @Column(name = "section")
     private String section;
 

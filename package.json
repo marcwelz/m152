@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/marcwelz/m152/issues"
   },
-  "homepage": "https://github.com/marcwelz/m152#readme"
+  "homepage": "https://github.com/marcwelz/m152#readme",
+  "dependencies": {
+    "local-web-server": "^5.2.0"
+  }
 }

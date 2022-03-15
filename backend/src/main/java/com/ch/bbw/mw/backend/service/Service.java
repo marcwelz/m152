@@ -3,25 +3,28 @@ package com.ch.bbw.mw.backend.service;
 import com.ch.bbw.mw.backend.model.ImageM152;
 import com.ch.bbw.mw.backend.repository.Repository;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
-import java.util.List;
+import java.util.Collection;
 
 @org.springframework.stereotype.Service
 @AllArgsConstructor
 public class Service {
 
-    private Repository repository;
+    private final Repository repository;
 
     public void addImage(ImageM152 imageM152) {
         repository.save(imageM152);
     }
 
-    public List<ImageM152> getImagesBySector(String sector) {
-        return null;
+    public Collection<ImageM152> getImagesBySector(String sector) {
+        return repository.findAllBySection(sector);
     }
 
-    public ImageM152 getImageByFilename(String filename) {
-        return null;
+    public Collection<ImageM152> getImageByFilename(String filename) {
+        return repository.findAllByFilename(filename);
+    }
+
+    public void deleteImage(String filename) {
+        repository.deleteImageM152(filename);
     }
 }

@@ -3,7 +3,18 @@ Content-Type: application/json
 
 {
 "filename": "file-test",
-  "version": 1,
-  "section": "galery",
+  "section": "galery2",
   "base64ImageString": "ewiugwnp9rgunewugnesg"
 }
+
+###
+GET localhost:8080/m152/sector/galery
+Content-Type: application/json
+
+###
+GET localhost:8080/m152/filename/file-test
+Content-Type: application/json
+
+###
+DELETE localhost:8080/m152/delete/file-333
+Content-Type: application/json
