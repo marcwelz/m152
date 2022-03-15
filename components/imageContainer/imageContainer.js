@@ -30,7 +30,7 @@ class ImageContainer extends HTMLElement {
         this.shadowRoot.addEventListener("click", function(){ 
           alert("Hello World!"); 
         });
-    }
+0    }
   }
   
   window.customElements.define('image-container-component', ImageContainer);

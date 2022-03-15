@@ -15,77 +15,54 @@
     <script>
         function initComparisons() {
             var x, i;
-            /*find all elements with an "overlay" class:*/
             x = document.getElementsByClassName("img-comp-overlay");
             for (i = 0; i < x.length; i++) {
-                /*once for each "overlay" element:
-                pass the "overlay" element as a parameter when executing the compareImages function:*/
                 compareImages(x[i]);
             }
             function compareImages(img) {
                 var slider, img, clicked = 0, w, h;
-                /*get the width and height of the img element*/
                 w = img.offsetWidth;
                 h = img.offsetHeight;
-                /*set the width of the img element to 50%:*/
                 img.style.width = (w / 2) + "px";
-                /*create slider:*/
                 slider = document.createElement("DIV");
                 slider.setAttribute("class", "img-comp-slider");
-                /*insert slider*/
                 img.parentElement.insertBefore(slider, img);
-                /*position the slider in the middle:*/
                 slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
                 slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
-                /*execute a function when the mouse button is pressed:*/
                 slider.addEventListener("mousedown", slideReady);
-                /*and another function when the mouse button is released:*/
                 window.addEventListener("mouseup", slideFinish);
-                /*or touched (for touch screens:*/
                 slider.addEventListener("touchstart", slideReady);
-                /*and released (for touch screens:*/
                 window.addEventListener("touchend", slideFinish);
+                
                 function slideReady(e) {
-                /*prevent any other actions that may occur when moving over the image:*/
-                e.preventDefault();
-                /*the slider is now clicked and ready to move:*/
-                clicked = 1;
-                /*execute a function when the slider is moved:*/
-                window.addEventListener("mousemove", slideMove);
-                window.addEventListener("touchmove", slideMove);
+                    e.preventDefault();
+                    clicked = 1;
+                    window.addEventListener("mousemove", slideMove);
+                    window.addEventListener("touchmove", slideMove);
+                    }
+                    function slideFinish() {
+                    clicked = 0;
+                    }
+                    function slideMove(e) {
+                    var pos;
+                    if (clicked == 0) return false;
+                    pos = getCursorPos(e)
+                    if (pos < 0) pos = 0;
+                    if (pos > w) pos = w;
+                    slide(pos);
                 }
-                function slideFinish() {
-                /*the slider is no longer clicked:*/
-                clicked = 0;
-                }
-                function slideMove(e) {
-                var pos;
-                /*if the slider is no longer clicked, exit this function:*/
-                if (clicked == 0) return false;
-                /*get the cursor's x position:*/
-                pos = getCursorPos(e)
-                /*prevent the slider from being positioned outside the image:*/
-                if (pos < 0) pos = 0;
-                if (pos > w) pos = w;
-                /*execute a function that will resize the overlay image according to the cursor:*/
-                slide(pos);
-                }
+
                 function getCursorPos(e) {
-                var a, x = 0;
-                e = (e.changedTouches) ? e.changedTouches[0] : e;
-                /*get the x positions of the image:*/
-                a = img.getBoundingClientRect();
-                /*calculate the cursor's x coordinate, relative to the image:*/
-                x = e.pageX - a.left;
-                /*consider any page scrolling:*/
-                x = x - window.pageXOffset;
-                return x;
+                    var a, x = 0;
+                    e = (e.changedTouches) ? e.changedTouches[0] : e;
+                    a = img.getBoundingClientRect();
+                    x = e.pageX - a.left;
+                    x = x - window.pageXOffset;
+                    return x;
                 }
                 function slide(x) {
-                /*resize the image:*/
-                img.style.width = x + "px";
-                /*position the slider:*/
-                slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+                    img.style.width = x + "px";
+                    slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
                 }
             }
         }
@@ -154,7 +131,9 @@
                     <div class="image-information-left-content">
                         <h3>Pistenbully auf Drogen</h2>
                         <h5>Hue Rotation effect</h3>
-                        <p>Die Farben werden Invertiert. Das heisst, dass sich die Farben
+                        <p>
+                            Goldenen Schnitt
+                            Die Farben werden Invertiert. Das heisst, dass sich die Farben
                             "umkehren". Weiss wird zu Schwarz und umgekehrt.
                         </p>
                     </div>
@@ -178,12 +157,37 @@
                       <img src="images/images/IMG_00439.JPG" style="filter: invert(100%);" width="600" height="400">
                     </div>
                 </div>
+
+                <h3>Popup</h3>
+
+                <img id="myImg" src="images/images/IMG_00001.JPG" alt="Snow" style="width:100%;max-width:300px; object-fit: cover;">
+
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
             </div>
         </content-component>
     </div>
     <footer-component></footer-component>
 
     <script>
+        var modal = document.getElementById("myModal");
+
+        var img = document.getElementById("myImg");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+        }
+
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() { 
+        modal.style.display = "none";
+        }
         initComparisons();
     </script>
 

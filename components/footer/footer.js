@@ -13,6 +13,7 @@ class Footer extends HTMLElement {
               <p>About us</p>
               <p onclick="window.location.href = 'index.html';">Home</p>
               <p onclick="window.location.href = 'galery.html';">Galery</p>
+              <p onclick="window.location.href = 'ideafinding.html';">Ideenfindung</p>
               <p onclick="window.location.href = 'transcript.html';">Transkript</p>
               <p onclick="window.location.href = 'functional_galery.html';">Funktionale Galerie</p>
               </div>
