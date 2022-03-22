@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Collection;
 
 @RequiredArgsConstructor
@@ -32,7 +33,11 @@ public class Controller {
 
     @PutMapping(value = "/update/{oldFilename}/{newFilename}")
     public void deleteImage(@PathVariable String oldFilename, @PathVariable String newFilename) {
-        System.out.println(oldFilename  + " " + newFilename);
         service.updateImageM152(oldFilename, newFilename);
+    }
+
+    @GetMapping(value = "/convert")
+    public void convert() throws IOException {
+        service.convertImagesAndImportToDb();
     }
 }
