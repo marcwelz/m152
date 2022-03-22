@@ -29,4 +29,10 @@ public class Controller {
     public void deleteImage(@PathVariable String filename) {
         service.deleteImage(filename);
     }
+
+    @PutMapping(value = "/update/{oldFilename}/{newFilename}")
+    public void deleteImage(@PathVariable String oldFilename, @PathVariable String newFilename) {
+        System.out.println(oldFilename  + " " + newFilename);
+        service.updateImageM152(oldFilename, newFilename);
+    }
 }

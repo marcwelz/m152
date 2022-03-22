@@ -19,5 +19,10 @@ public interface Repository extends CrudRepository<ImageM152, Integer> {
     @Transactional
     @Query("DELETE FROM ImageM152 i WHERE i.filename = :filename")
     void deleteImageM152(@Param("filename") String filename);
+
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query("UPDATE ImageM152 i SET i.filename = :newFilename WHERE i.filename = :oldFilename")
+    void updateImageM152(@Param("oldFilename") String oldFilename, @Param("newFilename") String newFilename);
 }
 

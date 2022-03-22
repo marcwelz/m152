@@ -23,4 +23,8 @@ public class Service {
     public void deleteImage(String filename) {
         repository.deleteImageM152(filename);
     }
+
+    public void updateImageM152(String oldFilename, String newFilename) {
+        repository.updateImageM152(oldFilename, newFilename);
+    }
 }
