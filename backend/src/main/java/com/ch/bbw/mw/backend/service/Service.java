@@ -16,10 +16,6 @@ public class Service {
         repository.save(imageM152);
     }
 
-    public Collection<ImageM152> getImagesBySector(String sector) {
-        return repository.findAllBySection(sector);
-    }
-
     public Collection<ImageM152> getImageByFilename(String filename) {
         return repository.findAllByFilename(filename);
     }

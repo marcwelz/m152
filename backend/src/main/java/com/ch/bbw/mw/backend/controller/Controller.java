@@ -20,11 +20,6 @@ public class Controller {
         return service.getImageByFilename(filename);
     }
 
-    @GetMapping(value = "/sector/{sector}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<ImageM152> getImagesBySector(@PathVariable String sector) {
-        return service.getImagesBySector(sector);
-    }
-
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addImage(@RequestBody ImageM152 imageM152) {
         service.addImage(imageM152);

@@ -21,9 +21,6 @@ public class ImageM152 {
     @Column(name = "filename")
     private String filename;
 
-    @Column(name = "section")
-    private String section;
-
     @Column(name = "base64_image_string")
     private String base64ImageString;
 

@@ -3,7 +3,6 @@ Content-Type: application/json
 
 {
 "filename": "file-test",
-  "section": "galery2",
   "base64ImageString": "ewiugwnp9rgunewugnesg"
 }
 

@@ -12,9 +12,6 @@ import java.util.Collection;
 @org.springframework.stereotype.Repository
 public interface Repository extends CrudRepository<ImageM152, Integer> {
 
-    @Query("SELECT i FROM ImageM152 i WHERE i.section = :section")
-    Collection<ImageM152> findAllBySection(@Param("section") String section);
-
     @Query("SELECT i FROM ImageM152 i WHERE i.filename = :filename")
     Collection<ImageM152> findAllByFilename(@Param("filename") String filename);
 
