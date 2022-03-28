@@ -11,13 +11,21 @@ PUT localhost:8080/m152/update/file-test-new/file-test
 Content-Type: application/json
 
 ###
-GET localhost:8080/m152/filename/file-test
+GET localhost:8080/m152/filename/IMG_00118.JPG
 Content-Type: application/json
 
 ###
-DELETE localhost:8080/m152/delete/new filename
+DELETE localhost:8080/m152/delete/.DS_Store
 Content-Type: application/json
 
 ###
 GET localhost:8080/m152/convert
+Content-Type: application/json
+
+###
+GET localhost:8080/m152/convert/IMG_00118.JPG
+Content-Type: application/json
+
+###
+GET localhost:8080/m152/convert/png/IMG_00118.JPG
 Content-Type: application/json

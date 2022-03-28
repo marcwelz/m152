@@ -40,4 +40,14 @@ public class Controller {
     public void convert() throws IOException {
         service.convertImagesAndImportToDb();
     }
+
+    @GetMapping(value = "/convert/{filename}")
+    public ImageM152 addWatermarkToImage(@PathVariable String filename) throws IOException {
+        return service.addWatermarkToImage(filename);
+    }
+
+    @GetMapping(value = "/convert/png/{filename}")
+    public void convertPNGtoJPEG(@PathVariable String filename) throws IOException {
+        service.convertPNGtoJPEG(filename);
+    }
 }
