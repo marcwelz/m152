@@ -1,0 +1,26 @@
+body {
+    color: black;
+    font-family: Helvetica, Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+.procedure-container > h2 {
+    text-align: center;
+}
+
+.procedure_form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.display_image {
+    margin-top: 50px;
+    width: 500px; 
+    object-fit: cover;
+}
+
+.procedure_modal-content {
+    display: flex;
+    flex-direction: column;
+}

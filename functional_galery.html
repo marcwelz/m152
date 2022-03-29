@@ -163,10 +163,14 @@
                 <img id="myImg" src="images/images/IMG_00001.JPG" alt="Snow" style="width:100%;max-width:300px; object-fit: cover;">
 
                 <div id="myModal" class="modal">
-                    <span class="close">&times;</span>
-                    <img class="modal-content" id="img01">
-                    <div id="caption"></div>
+                        <span class="close">&times;</span>
+                        <img class="modal-content" id="img01">
+                        <div id="caption"></div>
                 </div>
+
+                <input type="text" id="textfield_filename" placeholder="enter filename..." />
+                <button onclick="loadWatermark()">submit</button>
+                <img style="width: 500px; object-fit: cover;" id="watermark_image"/>
             </div>
         </content-component>
     </div>
@@ -189,6 +193,28 @@
         modal.style.display = "none";
         }
         initComparisons();
+
+        function loadWatermark() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState != 4) return;
+
+                if (this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    console.log(data)
+
+                    document.getElementById('watermark_image')
+                        .src = 'data:image/png;base64,' + data.base64ImageString
+                }
+            };
+
+            const filename = document.getElementById("textfield_filename").value
+            const finalUrl = "http://localhost:8080/m152/convert/" + filename
+
+            xhr.open('GET', finalUrl, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send();
+        }
     </script>
 
 </body>

@@ -34,6 +34,7 @@
 
 .navigation > button {
     background-color: #f09f9c;
+    height: 54px;
     border: none;
     color: white;
     padding: 18px 16px;

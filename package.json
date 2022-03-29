@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/marcwelz/m152#readme",
   "dependencies": {
+    "@axa-ch/file-upload": "^5.4.3",
+    "@axa-ch/modal": "^2.1.0",
     "local-web-server": "^5.2.0"
   }
 }

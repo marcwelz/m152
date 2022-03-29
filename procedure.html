@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="components/navigation/navigation.js" type="text/javascript" defer></script>
+    <script src="components/footer/footer.js" type="text/javascript" defer></script>
+    <script src="components/title/title.js" type="text/javascript" defer></script>
+    <script src="components/content/content.js" type="text/javascript" defer></script>
+    <script src="components/imageContainer/imageContainer.js" type="text/javascript" defer></script>
+    <link rel="stylesheet" href="sites/procedure/procedure.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>procedure</title>
+</head>
+<body>
+
+    <navigation-component></navigation-component>
+    <div class="header">
+        <title-component></title-component>
+    </div>
+
+    <div class="body">
+        <content-component>
+            <div class="procedure-container">
+                <h2>Prozeduren</h2>
+                <button style="margin-bottom: 20px;" class="w3-button w3-red" onclick="openModal()"><b>file-upload</b></button>
+                <div class="procedure_form">
+                    <div style="width: 80%;" class="procedure_from-label">
+                        <label class="w3-text-black"><b>Watermark</b></label>
+                        <input class="w3-input w3-border" type="text" id="textfield_filename" placeholder="enter filename..." />
+                    </div>
+                    <div style="margin-top: 23px;">
+                        <button class="w3-button w3-red" onclick="loadWatermark()"><b>submit</b></button>
+                    </div>
+                </div>
+
+                <div class="procedure_form" style="margin-top: 50px;">
+                    <div style="width: 80%;" class="procedure_from-label">
+                        <label class="w3-text-black"><b>get image from db</b></label>
+                        <input class="w3-input w3-border" type="text" id="textfield_filename_get" placeholder="enter filename..." />
+                    </div>
+                    <div style="margin-top: 23px;">
+                        <button class="w3-button w3-red" onclick="getImage()"><b>submit</b></button>
+                    </div>
+                </div>
+
+                <img class="display_image" id="watermark_image"/>
+
+                <axa-modal>
+                    <div class="procedure_modal-content">
+                        <h2>File Upload</h2>
+                        <div style="width:450px">
+                            <axa-file-upload
+                                maxsizeofsinglefilekb="10000"
+                                maxsizeofallfileskb="12000"
+                                allowedfiletypes="image/jpg, image/jpeg, image/png"
+                                infotext="Drag and drop to upload your file"
+                            >
+                            </axa-file-upload>
+                            <button style="margin-top: 20px;" class="w3-button w3-red" onclick="submitUploadedImage()"><b>submit</b></button>
+                        </div>
+                    </div>
+                </axa-modal>
+            </div>
+        </content-component>
+    </div>
+    <footer-component></footer-component>
+    <script src="node_modules/@axa-ch/file-upload/dist/index.js"></script>
+    <script src="node_modules/@axa-ch/modal/dist/index.js"></script>
+    <script>
+        const imgSrs = lambo_bild.jpeg
+        var isModalOpen = false;
+
+        function openModal() {
+            const modal = document.querySelector("axa-modal")
+            isModalOpen = !isModalOpen
+            if(isModalOpen === false) {
+                modal.removeAttribute("open")
+            } else {
+                modal.setAttribute("open", isModalOpen)
+            }
+            
+        }
+
+        function submitUploadedImage() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState != 4) return;
+
+                if (this.status == 200) {
+                    openModal()
+                    return;
+                }
+            };
+
+            const finalUrl = "http://localhost:8080/m152/fileupload/" + imgSrs
+
+            xhr.open('GET', finalUrl, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send();
+        }
+
+        function loadWatermark() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState != 4) return;
+
+                if (this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    console.log(data)
+
+                    document.getElementById('watermark_image')
+                        .src = 'data:image/png;base64,' + data.base64ImageString
+                }
+            };
+
+            const filename = document.getElementById("textfield_filename").value
+            const finalUrl = "http://localhost:8080/m152/convert/" + filename
+
+            xhr.open('GET', finalUrl, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send();
+        }
+
+        function getImage() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState != 4) return;
+
+                if (this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    console.log(data)
+
+                    const imgElement = document.getElementById('watermark_image')
+
+                    imgElement.src = ""
+                    imgElement.src = 'data:image/png;base64,' + data.base64ImageString
+                }
+            };
+
+            const filename = document.getElementById("textfield_filename_get").value
+            console.log(filename)
+            const finalUrl = "http://localhost:8080/m152/filename/" + filename
+
+            xhr.open('GET', finalUrl, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send();
+        }
+    </script>
+
+</body>
+</html>
+
